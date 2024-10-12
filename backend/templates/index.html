@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>To-Do Приложение</title>
+
+   <!-- Подключаем внешний CSS файл из папки static -->
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+   <h1>Список задач</h1> <!-- Заголовок по центру -->
+
+        <div id="task-list-container"> <!-- Контейнер для списка задач -->
+            <div id="task-list">
+                {% for task in tasks %}
+                        <div class="task">
+                            <div class="task-content">
+                                <div class="task-header"> <!-- Новый контейнер для номера и заголовка -->
+                                    <span class="task-number">{{ loop.index }}.</span> <!-- Номер задачи -->
+                                    <h3 class="task-title">{{ task.title }}</h3>
+                                    <input type="text" class="edit-title" value="{{ task.title }}" style="display:none;" /> <!-- Поле ввода заголовка -->
+                                </div>
+                                <p class="task-description">{{ task.description }}</p>
+                                <textarea class="edit-description" style="display:none;">{{ task.description }}</textarea>
+                                <div class="task-footer">
+                                    <span class="task-date">Добавлено: {{ task.created_at }}</span>
+                                </div>
+                            </div>
+                            <div class="button-container">
+                                <button class="edit-button" data-id="{{ task.id }}">Редактировать</button>
+                                <button class="save-button" style="display:none;" data-id="{{ task.id }}">Сохранить</button>
+                                <button class="delete-button" data-id="{{ task.id }}">Удалить</button>
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
+        </div>
+
+   <div id="task-form-container">
+       <form id="task-form">
+           <input type="text" id="task-title" placeholder="Название задачи" required>
+           <textarea id="task-description" placeholder="Описание"></textarea>
+           <button type="submit">Добавить задачу</button>
+       </form>
+   </div>
+
+   <!-- Подключаем внешний JavaScript файл -->
+   <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

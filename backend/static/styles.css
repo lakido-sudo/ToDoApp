@@ -1,0 +1,174 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    text-align: center; /* Центрируем заголовок */
+    margin: 0; /* Убираем отступы */
+    height: 80px; /* Высота заголовка */
+    line-height: 80px; /* Центрируем текст по вертикали */
+    position: fixed; /* Закрепляем заголовок */
+    top: 0; /* Позиция сверху */
+    left: 0; /* Прижимаем к левому краю */
+    width: 100%; /* Занимает всю ширину */
+    background-color: #080808; /* Фон заголовка */
+    color: white; /* Цвет текста заголовка */
+    z-index: 1000; /* Устанавливаем z-index, чтобы заголовок был выше других элементов */
+
+}
+
+#task-list-container {
+    flex: 1; /* Позволяет этому блоку занимать оставшееся пространство */
+    padding-top: 90px; /* Отступ сверху, чтобы избежать перекрытия с заголовком */
+    padding-bottom: 200px; /* Отступ снизу для предотвращения перекрытия с формой (высота блока) */
+    padding-left: 10px; /* Отступ слева */
+    padding-right: 10px; /* Отступ справа */
+    background-color: #080808;
+}
+
+#task-list {
+    max-height: calc(100vh - 140px); /* Максимальная высота для прокрутки (высота экрана минус высота заголовка и блока с формой) */
+    overflow-y: auto; /* Позволяет прокручивать список задач */
+    background-color: #fff; /* Цвет фона для контейнера со списком задач */
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для контейнера */
+}
+
+
+
+#task-list .task:last-child {
+    border-bottom-left-radius: 0; /* Убираем скругление нижнего левого угла */
+    border-bottom-right-radius: 0; /* Убираем скругление нижнего правого угла */
+}
+
+.task-footer {
+    text-align: right; /* Выравнивание текста по правому краю */
+    font-size: 12px; /* Размер шрифта для даты и времени */
+    color: #888; /* Цвет текста для даты и времени */
+    padding-right: 10px; /* Отступ справа */
+}
+
+.button-container {
+   display: flex; /* Используем flexbox для кнопок редактирования и удаления */
+   justify-content: flex-end; /* Выравниваем кнопки по правому краю */
+   gap: 10px; /* Отступ между кнопками */
+   margin-top: 5px; /* Отступ сверху для кнопок */
+   background-color: #fff; /* Черный фон для блока кнопок */
+   padding: 10px; /* Отступ внутри блока кнопок */
+   border-radius: 5px; /* Скругление углов блока кнопок */
+}
+
+button.edit-button,
+button.delete-button {
+   padding: 5px;
+   background-color: #007bff; /* Синий цвет для кнопки редактирования */
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 14px;
+}
+
+button.edit-button:hover {
+   background-color: #0056b3; /* Темнее при наведении для редактирования */
+}
+
+button.delete-button {
+   background-color: #dc3545; /* Красный цвет для кнопки удаления */
+}
+
+button.delete-button:hover {
+   background-color: #c82333; /* Темнее при наведении для удаления */
+}
+
+button.save-button {
+    background-color: #28a745; /* Зеленый цвет для кнопки сохранения */
+}
+
+button.save-button:hover {
+    background-color: #218838; /* Темнее при наведении */
+}
+
+.task {
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-header {
+    display: flex; /* Используем Flexbox для горизонтального выравнивания */
+
+}
+
+.task-number {
+    margin-right: 5px; /* Отступ между номером и заголовком */
+    font-weight: bold; /* Выделяем номер жирным шрифтом */
+    font-size: 18px; /* Увеличиваем размер шрифта */
+    padding: 20px;
+}
+.edit-title, .edit-description {
+    width: 100%; /* Заставляем поля ввода занимать всю ширину */
+    margin-bottom: 10px; /* Отступ снизу */
+    padding: 8px; /* Отступ внутри поля */
+    border: 1px solid #ddd; /* Граница поля */
+    border-radius: 5px; /* Скругление углов */
+    box-sizing: border-box; /* Учитываем отступы и границы в общей ширине */
+}
+
+.edit-description {
+    resize: vertical; /* Позволяет изменять размер только по вертикали */
+}
+
+.task-description {
+    overflow-wrap: break-word; /* Переносит длинные слова на новую строку */
+    margin-left: 20px;
+    margin-right: 20px
+}
+
+
+/* Фиксированное позиционирование для блока добавления задач */
+#task-form-container {
+    background-color: #080808;
+    padding: 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"], textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Запрет на изменение размера текстового поля для описания задачи */
+textarea {
+   resize: none;
+}
+
+button {
+   padding: 10px;
+   background-color: #28a745;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 16px;
+}
+
+button:hover {
+   background-color: #218838;
+}
