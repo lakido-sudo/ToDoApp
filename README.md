@@ -49,4 +49,6 @@ SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'postgresql://user:p
 ```
 
 ## Связь 
-Если у вас есть вопросы или предложения, пожалуйста, свяжитесь со мной по электронной почте lakido551@gmail.com.
+Если у вас есть вопросы или предложения, пожалуйста, свяжитесь со мной:
+- lakido551@gmail.com.
+- https://t.me/lakido
