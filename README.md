@@ -20,8 +20,8 @@
 ### Клонирование репозитория
 
 ```bash
-git clone https://github.com/ваш_пользователь/todo-app.git
-cd todo-app/backend
+git clone https://github.com/lakido-sudo/ToDoApp.git
+cd ToDoApp/backend
 ```
 
 ## Запуск приложения
@@ -49,4 +49,4 @@ SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'postgresql://user:p
 ```
 
 ## Связь 
-Если у вас есть вопросы или предложения, пожалуйста, свяжитесь со мной по электронной почте [lakido551@gmail.com].
+Если у вас есть вопросы или предложения, пожалуйста, свяжитесь со мной по электронной почте lakido551@gmail.com.
